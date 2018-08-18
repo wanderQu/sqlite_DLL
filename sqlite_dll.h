@@ -17,7 +17,7 @@ extern "C" SQLITE_DLL_API char* getTbName(int i);
 extern "C" SQLITE_DLL_API bool DB_create(sqlite3 *db, char *tbName, char *Key);
 extern "C" SQLITE_DLL_API bool DB_insertID(sqlite3 *db, int tbID, char *key, char *value);
 extern "C" SQLITE_DLL_API bool DB_insertName(sqlite3 *db, char *tbName, char *key, char *value);
-extern "C" SQLITE_DLL_API bool DB_select(sqlite3 *db, char *tbName, char *key = 0);
+extern "C" SQLITE_DLL_API bool DB_select(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName, char *key = 0);
 extern "C" SQLITE_DLL_API bool DB_excuteNoCall(sqlite3 *db, const char *commond, char *errMsg = 0);
 extern "C" SQLITE_DLL_API bool DB_excute(sqlite3 *db, const char *commond, sqlite3_callback callback, void *data, char *errMsg = 0);
 extern "C" SQLITE_DLL_API bool DB_close(sqlite3 *db);
