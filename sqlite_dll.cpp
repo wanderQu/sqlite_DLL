@@ -85,7 +85,7 @@ char* G2U(const char* gb2312)
 	return str;
 }
 
-bool selectDB(sqlite3 *db, sqlite3_callback callback, void *data,char *tbName, char *key)
+bool DB_select(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName, char *key)
 {
 	char *str;
 	if (key == 0)
