@@ -92,12 +92,12 @@ bool DB_select(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName,
 		str = sqlite3_mprintf("SELECT * FROM %s", tbName);
 	else
 		str = sqlite3_mprintf("SELECTE %s FROM %s", key, tbName);
+
 	DB_excute(db, str, callback, data);
 	return true;
 }
 bool DB_excuteNoCall(sqlite3 *db, const char *commond, char *errMsg)
 {
-
 	char *t = G2U(commond);
 	if (sqlite3_exec(db, t, 0, 0, &errMsg) == SQLITE_OK)
 		return true;
@@ -106,9 +106,9 @@ bool DB_excuteNoCall(sqlite3 *db, const char *commond, char *errMsg)
 }
 bool DB_excute(sqlite3 *db, const char *commond, sqlite3_callback callback, void *data, char *errMsg)
 {
-	char *t = G2U(commond);
-
-	if (sqlite3_exec(db, t, callback, data, &errMsg) == SQLITE_OK)
+//	char *t = G2U(commond);
+	
+	if(sqlite3_exec(db, commond, callback, data, &errMsg) == SQLITE_OK)
 		return true;
 	return false;
 
