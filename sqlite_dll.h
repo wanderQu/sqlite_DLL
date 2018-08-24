@@ -20,6 +20,7 @@ extern "C" SQLITE_DLL_API bool DB_insertName(sqlite3 *db, char *tbName, char *ke
 extern "C" SQLITE_DLL_API bool DB_select(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName, char *key = 0);
 extern "C" SQLITE_DLL_API bool DB_excuteNoCall(sqlite3 *db, const char *commond, char *errMsg = 0);
 extern "C" SQLITE_DLL_API bool DB_excute(sqlite3 *db, const char *commond, sqlite3_callback callback, void *data, char *errMsg = 0);
+extern "C" SQLITE_DLL_API bool DB_selectTitle(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName);
 extern "C" SQLITE_DLL_API bool DB_close(sqlite3 *db);
 extern "C" SQLITE_DLL_API char* U2G(const char* utf8);
 extern "C" SQLITE_DLL_API char* G2U(const char* gb2312);

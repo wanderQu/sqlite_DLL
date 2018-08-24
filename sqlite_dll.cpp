@@ -96,11 +96,19 @@ bool DB_select(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName,
 	DB_excute(db, str, callback, data);
 	return true;
 }
+bool DB_selectTitle(sqlite3 *db, sqlite3_callback callback, void *data, char *tbName)
+{
+	char *str;
+	str = sqlite3_mprintf("PRAGMA TABLE_INFO (%s)", tbName);
+	DB_excute(db, str, callback, data);
+	return true;
+}
 bool DB_excuteNoCall(sqlite3 *db, const char *commond, char *errMsg)
 {
 	char *t = G2U(commond);
 	if (sqlite3_exec(db, t, 0, 0, &errMsg) == SQLITE_OK)
 		return true;
+	MessageBoxA(0, errMsg, "error", MB_ICONERROR);
 	return false;
 
 }
@@ -110,6 +118,7 @@ bool DB_excute(sqlite3 *db, const char *commond, sqlite3_callback callback, void
 	
 	if(sqlite3_exec(db, commond, callback, data, &errMsg) == SQLITE_OK)
 		return true;
+	MessageBoxA(0, errMsg, "error", MB_ICONERROR);
 	return false;
 
 }
